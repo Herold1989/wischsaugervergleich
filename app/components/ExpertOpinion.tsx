@@ -18,7 +18,7 @@ const ExpertOpinion: React.FC<ExpertOpinionProps> = ({ opinion }) => {
             <div className="flex items-start mb-2">
                 <div className="border-l-4 border-orange-500 pl-2">
                     <h4 className="font-semibold text-orange-500 mb-2">Meinung der Redaktion</h4>
-                    <p className="mb-2 flex-grow italic">
+                    <p className="mb-2 flex-grow italic text-left">
                         {isExpanded ? opinion : `${opinion.substring(0, 100)}...`}
                     </p>
                     <Button label={isExpanded ? "Weniger anzeigen" : "Mehr erfahren"} className="p-button-text mt-2 mb-4 font-semibold" onClick={toggleExpand} />

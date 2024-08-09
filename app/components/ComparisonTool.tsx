@@ -88,20 +88,36 @@ const ComparisonTool = () => {
     return (
         <div className="comparison-tool flex flex-col">
             <div className='p-2'>
-                <header className="rounded-md w-full flex flex-col md:flex-row items-center justify-between bg-white p-4 shadow-md">
+            <header className="rounded-md w-full flex flex-col md:flex-row items-center justify-between bg-white p-4 shadow-md">
                     <div className="flex flex-col md:flex-row items-center md:space-x-4 space-y-2 md:space-y-0 w-full md:w-auto">
-                        <h1 className="text-xl md:text-2xl font-bold mb-2 md:mb-0">Wischsauger</h1>
-                        <Badge value={`Preis: ${selectedPrice[1]} €`} severity="info" className="text-sm md:text-base" />
-                        <span className="text-sm md:text-base">{filteredProducts.length} Ergebnisse</span>
-                        <Button label="Alle zurücksetzen" className="p-button-text text-sm md:text-base" onClick={resetFilters} />
+                        {loading ? (
+                            <Skeleton width="200px" height="30px" />
+                        ) : (
+                            <h1 className="text-xl md:text-2xl font-bold mb-2 md:mb-0">Wischsauger</h1>
+                        )}
+                        {loading ? (
+                            <Skeleton width="100px" height="30px" />
+                        ) : (
+                            <Badge value={`Preis: ${selectedPrice[1]} €`} severity="info" className="text-sm md:text-base" />
+                        )}
+                        {loading ? (
+                            <Skeleton width="100px" height="30px" />
+                        ) : (
+                            <span className="text-sm md:text-base">{filteredProducts.length} Ergebnisse</span>
+                        )}
+                        {!loading && (
+                            <Button label="Alle zurücksetzen" className="p-button-text text-sm md:text-base" onClick={resetFilters} />
+                        )}
                     </div>
-                    <Dropdown
-                        value={sortOption}
-                        options={sortOptions}
-                        onChange={(e) => setSortOption(e.value)}
-                        placeholder="Sortieren nach"
-                        className="text-sm md:text-base w-full md:w-auto"
-                    />
+                    {!loading && (
+                        <Dropdown
+                            value={sortOption}
+                            options={sortOptions}
+                            onChange={(e) => setSortOption(e.value)}
+                            placeholder="Sortieren nach"
+                            className="text-sm md:text-base w-full md:w-auto"
+                        />
+                    )}
                 </header>
             </div>
             <div className="flex flex-wrap">
