@@ -48,7 +48,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
         }, 100); // Simulate a 100ms loading delay
 
         return () => clearTimeout(timer); // Cleanup timer if component unmounts
-    }, [products]);
+    }, [products, onFilterChange]);
 
     if (loading) {
         // Display skeletons or placeholders while loading
