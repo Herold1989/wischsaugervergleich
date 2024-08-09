@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+.rating-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rating-label {
+  flex: 0 0 100px; /* Adjust this value based on the longest label */
+  margin-right: 1rem;
+  word-wrap: break-word; /* Allow breaking long words */
+}
+
+.rating-bar {
+  flex: 1;
+  height: 20px; /* Adjust this value to control the thickness of the bar */
+  border-radius: 7.5px; /* Half of the height to make it fully round */
+  overflow: hidden; /* Ensure the progress indicator doesn't spill over */
+}
+
+.rating-bar .p-progressbar-value {
+  border-radius: 7.5px; /* Same as the container to make the progress rounded */
+}
+
+.rating-bar .p-progressbar-label {
+  font-weight: 700; /* Set font weight to semibold (600) */
+  color: #FFF; /* Optional: Set the color of the text */
+}
+
+
+
+/* Ensure input fields and select fields are styled correctly */
+.p-inputtext, .p-dropdown {
+  border: 1px solid #ccc; /* Default border color */
+  border-radius: 4px; /* Rounded corners */
+  padding: 0.5rem; /* Padding for input fields */
+  width: 100%; /* Full width */
+}
+
+.p-inputtext:focus, .p-dropdown:focus {
+  border-color: #007ad9; /* Border color when focused */
+  box-shadow: 0 0 0 3px rgba(0, 122, 217, 0.25); /* Focus shadow */
+}
+
+.p-dropdown .p-dropdown-trigger {
+  color: #007ad9; /* Color for dropdown trigger */
+}
+
+.p-dropdown .p-dropdown-panel {
+  border: 1px solid #007ad9; /* Border color for dropdown panel */
+}
+
+.amazon-button {
+  background: linear-gradient(to right, #f8b500, #ff7e00);
+  color: #fff;
+  border: none;
+}
+
+.amazon-button:hover {
+  background: linear-gradient(to right, #ff7e00, #f8b500);
+  color: #fff;
+}
+
+.p-button-secondary {
+  background-color: #e0e0e0;
+  color: #000;
+  border: none;
+}
+
+.p-button-secondary:hover {
+  background-color: #cfcfcf;
+  color: #000;
+}
+
+
