@@ -16,6 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="color-scheme" content="light only" />
       <body className={inter.className}>{children}</body>
     </html>
   );
