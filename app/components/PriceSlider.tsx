@@ -16,21 +16,27 @@ const PriceSlider: React.FC<PriceSliderProps> = ({
   setSelectedPrice,
   priceRange,
 }) => {
-  const [inputPrice, setInputPrice] = useState<[number, number]>(priceRange); // Initialize with priceRange
-  const debouncedPrice = useDebouncePriceRange(inputPrice, 250);
+  const [inputPrice, setInputPrice] = useState<[number, number]>(selectedPrice); // Initialize with selectedPrice
+  const debouncedPrice = useDebouncePriceRange(inputPrice, 1000);
 
   useEffect(() => {
     setInputPrice(selectedPrice);
   }, [selectedPrice]);
 
-  const handlePriceChange = (value: [number, number]) => {
-    const [minPrice, maxPrice] = value;
+  const handleInputChange = (index: 0 | 1, value: number) => {
+    let newInputPrice = [...inputPrice] as [number, number];
 
     // Enforce the max range constraints
-    const adjustedMaxPrice = Math.min(maxPrice, priceRange[1]);
-    const adjustedMinPrice = Math.max(minPrice, priceRange[0]);
+    newInputPrice[index] = Math.max(0, Math.min(value, priceRange[1]));
 
-    setInputPrice([adjustedMinPrice, adjustedMaxPrice]);
+    // Handle switch if minPrice > maxPrice
+    if (index === 0 && newInputPrice[0] > newInputPrice[1]) {
+      newInputPrice = [newInputPrice[1], newInputPrice[0]];
+    } else if (index === 1 && newInputPrice[1] < newInputPrice[0]) {
+      newInputPrice = [newInputPrice[1], newInputPrice[0]];
+    }
+
+    setInputPrice(newInputPrice);
   };
 
   useEffect(() => {
@@ -46,7 +52,7 @@ const PriceSlider: React.FC<PriceSliderProps> = ({
           type="number"
           value={inputPrice[0].toString()}
           onChange={(e) =>
-            handlePriceChange([Number(e.target.value), inputPrice[1]])
+            handleInputChange(0, Number(e.target.value))
           }
           placeholder={priceRange[0].toString()}
           className="w-20 p-inputtext-sm"
@@ -57,7 +63,7 @@ const PriceSlider: React.FC<PriceSliderProps> = ({
           type="number"
           value={inputPrice[1].toString()}
           onChange={(e) =>
-            handlePriceChange([inputPrice[0], Number(e.target.value)])
+            handleInputChange(1, Number(e.target.value))
           }
           placeholder={priceRange[1].toString()}
           className="w-20 p-inputtext-sm"
@@ -66,7 +72,7 @@ const PriceSlider: React.FC<PriceSliderProps> = ({
       </div>
       <CustomStyledSlider
         selectedPrice={inputPrice}
-        setSelectedPrice={handlePriceChange}
+        setSelectedPrice={setSelectedPrice} // Pass the original setSelectedPrice function
         priceRange={priceRange}
       />
       <p style={{ fontSize: "16px" }}>{`${inputPrice[0]}€ - ${inputPrice[1]}€`}</p>
