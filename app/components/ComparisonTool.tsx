@@ -6,8 +6,28 @@ import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { Badge } from 'primereact/badge';
 import { Skeleton } from 'primereact/skeleton';
-import { Product } from './types';
 import { applyFilters } from '../utils/filtering';
+
+// Type definition for the product
+export interface Product {
+    name: string;
+    price: number;
+    suction: number;
+    mopping: number;
+    app: number;
+    navigation: number;
+    extras: number;
+    praxis: number;
+    description: string;
+    image: string;
+    expertOpinion: string;
+    year: number;
+    dimensions: string;
+    obstacleHeight: string;
+    workingTime: string;
+    chargingTime: string;
+    features: { [key: string]: boolean };
+}
 
 const ComparisonTool = () => {
     const [products, setProducts] = useState<Product[]>([]);
