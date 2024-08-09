@@ -3,8 +3,8 @@ import { Badge } from 'primereact/badge';
 import { ProgressBar } from 'primereact/progressbar';
 import ExpertOpinion from './ExpertOpinion';
 import { Accordion, AccordionTab } from 'primereact/accordion';
-import { PrimeIcons } from 'primereact/api'; 
-
+import { PrimeIcons } from 'primereact/api';
+import Image from 'next/image';  // Import Image component from next/image
 
 interface Product {
     name: string;
@@ -38,7 +38,13 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
     return (
         <div className="product-card flex flex-col p-4 border rounded-lg shadow-md bg-white mb-2 h-full">
-            <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-md" />
+            <Image 
+                src={product.image} 
+                alt={product.name} 
+                width={500}        // Example width (adjust as needed)
+                height={300}       // Example height (adjust as needed)
+                className="w-full h-48 object-cover mb-4 rounded-md" 
+            />
             <div className="p-2 mb-2 bg-gray-100 rounded-md">
                 <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
             </div>
