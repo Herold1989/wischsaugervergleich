@@ -1,5 +1,3 @@
-// filtering.ts
-
 import { Product } from "../components/ComparisonTool";
 
 export const applyFilters = (
@@ -13,7 +11,9 @@ export const applyFilters = (
   let filtered = products;
 
   if (selectedYears.length) {
-    filtered = filtered.filter(product => selectedYears.includes(product.year.toString()));
+    filtered = filtered.filter(product =>
+      selectedYears.includes(product.year.toString())
+    );
   }
 
   if (selectedFeatures.length) {
@@ -23,7 +23,8 @@ export const applyFilters = (
   }
 
   filtered = filtered.filter(
-    product => product.price >= selectedPrice[0] && product.price <= selectedPrice[1]
+    product =>
+      product.price >= selectedPrice[0] && product.price <= selectedPrice[1]
   );
 
   if (modelSearch) {

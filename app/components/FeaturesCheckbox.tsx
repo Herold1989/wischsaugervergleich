@@ -2,17 +2,20 @@
 import React from "react";
 import { Checkbox } from "primereact/checkbox";
 import { Accordion, AccordionTab } from "primereact/accordion";
+import { Product } from "./ComparisonTool"; // Import the Product type
 
 interface FeaturesCheckboxProps {
   features: string[];
   selectedFeatures: string[];
   setSelectedFeatures: (features: string[]) => void;
+  filteredProducts: Product[]; // Include filteredProducts in props
 }
 
 const FeaturesCheckbox: React.FC<FeaturesCheckboxProps> = ({
   features,
   selectedFeatures,
   setSelectedFeatures,
+  filteredProducts,
 }) => {
   const onFeatureChange = (e: { value: string; checked: boolean }) => {
     let updatedFeatures = [...selectedFeatures];
@@ -26,6 +29,10 @@ const FeaturesCheckbox: React.FC<FeaturesCheckboxProps> = ({
     }
 
     setSelectedFeatures(updatedFeatures);
+  };
+
+  const countProductsByFeature = (feature: string) => {
+    return filteredProducts.filter((product) => product.features[feature]).length;
   };
 
   return (
@@ -59,8 +66,12 @@ const FeaturesCheckbox: React.FC<FeaturesCheckboxProps> = ({
                   boxShadow: "none", // No shadow
                 }}
               />
-              <label htmlFor={feature} style={{ fontWeight: '600', fontSize: '16px' }} className="ml-2">
-                {feature}
+              <label
+                htmlFor={feature}
+                style={{ fontWeight: "600", fontSize: "16px" }}
+                className="ml-2"
+              >
+                {feature} ({countProductsByFeature(feature)})
               </label>
             </div>
           ))}

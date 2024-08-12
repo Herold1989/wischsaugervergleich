@@ -21,6 +21,7 @@ interface FilterSidebarProps {
     priceRange: [number, number];
     modelSearch: string;
     setModelSearch: (search: string) => void;
+    filteredProducts: Product[];  // Pass the filtered products here
 }
 
 const FilterSidebar: React.FC<FilterSidebarProps> = ({
@@ -36,7 +37,8 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
     setSelectedFeatures,
     priceRange,
     modelSearch,
-    setModelSearch
+    setModelSearch,
+    filteredProducts  // Destructure filtered products
 }) => {
     const [loading, setLoading] = useState(true);
 
@@ -85,11 +87,13 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
                 years={years} 
                 selectedYears={selectedYears} 
                 setSelectedYears={setSelectedYears} 
+                filteredProducts={filteredProducts}  // Pass filtered products
             />
             <FeaturesCheckbox 
                 features={features} 
                 selectedFeatures={selectedFeatures} 
-                setSelectedFeatures={setSelectedFeatures} 
+                setSelectedFeatures={setSelectedFeatures}
+                filteredProducts={filteredProducts} // Pass filteredProducts here 
             />
         </div>
     );

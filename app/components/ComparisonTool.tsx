@@ -141,6 +141,7 @@ const ComparisonTool = () => {
                         priceRange={priceRange}
                         modelSearch={modelSearch}
                         setModelSearch={setModelSearch}
+                        filteredProducts={filteredProducts}
                     />
                 </aside>
                 <main className="flex-1 flex flex-col p-2">
