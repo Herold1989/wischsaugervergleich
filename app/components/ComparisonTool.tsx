@@ -110,7 +110,7 @@ const ComparisonTool = () => {
     setRows(event.rows);
     // Scroll to the top of the comparison-tool div
     if (comparisonToolRef.current) {
-        comparisonToolRef.current.scrollIntoView({ behavior: "instant"});
+      comparisonToolRef.current.scrollIntoView({ behavior: "instant" });
     }
   };
 
@@ -121,34 +121,32 @@ const ComparisonTool = () => {
     <div ref={comparisonToolRef} className="comparison-tool flex flex-col">
       <div className="p-2">
         <header className="rounded-md w-full flex flex-col md:flex-row items-center justify-between bg-white p-4 shadow-md">
-          <div className="flex flex-col md:flex-row items-center md:space-x-4 space-y-2 md:space-y-0 w-full md:w-auto">
+          <div className="flex flex-col justify-between md:flex-row items-center md:space-x-4 space-y-2 md:space-y-0 w-full md:w-auto">
             {loading ? (
               <Skeleton width="200px" height="30px" />
             ) : (
-              <h1 className="text-xl md:text-2xl font-bold mb-2 md:mb-0">
+              <h1 className="text-lg md:text-2xl font-bold mb-2 md:mb-0">
                 Wischsauger
               </h1>
             )}
             {loading ? (
               <Skeleton width="100px" height="30px" />
             ) : (
-              <Badge
-                value={`Preis: ${selectedPrice[1]} €`}
-                severity="info"
-                className="text-sm md:text-base"
-              />
+              <div className="text-sm md:text-xs md:items-center lg:text-base">
+                {`Preis: ≤${selectedPrice[1]} €`}
+              </div>
             )}
             {loading ? (
               <Skeleton width="100px" height="30px" />
             ) : (
-              <span className="text-sm md:text-base">
+              <span className="text-sm lg:text-base">
                 {filteredProducts.length} Ergebnisse
               </span>
             )}
             {!loading && (
               <Button
                 label="Alle zurücksetzen"
-                className="p-button-text text-sm md:text-base"
+                className="p-button-text text-sm lg:text-base"
                 onClick={resetFilters}
               />
             )}
@@ -159,13 +157,13 @@ const ComparisonTool = () => {
               options={sortOptions}
               onChange={(e) => setSortOption(e.value)}
               placeholder="Sortieren nach"
-              className="text-sm md:text-base w-full md:w-auto"
+              className="text-xs md:text-sm lg:text-base w-full md:w-auto"
             />
           )}
         </header>
       </div>
       <div className="flex flex-wrap">
-        <aside className="w-full md:w-1/4 p-2">
+        <aside className="w-full lg:w-1/4 md:w-full p-2">
           <FilterSidebar
             years={Array.from(
               new Set(products.map((product) => product.year.toString()))

@@ -47,7 +47,7 @@ const PriceSlider: React.FC<PriceSliderProps> = ({
   return (
     <div className="space-y-2 mb-4">
       <h3 className="text-lg font-semibold">Preis</h3>
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 lg:space-x-1">
         <InputText
           type="number"
           value={inputPrice[0].toString()}
