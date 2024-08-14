@@ -40,7 +40,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
     <div className="product-card flex flex-col p-4 border rounded-lg shadow-md bg-white mb-2 h-full">
       <Image
         src={product.image}
-        alt={product.name}
+        alt={`Image of ${product.name}`}
         width={500} // Example width (adjust as needed)
         height={300} // Example height (adjust as needed)
         className="w-full h-48 object-cover mb-4 rounded-md"
@@ -80,7 +80,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       </div>
       <div className="mt-4 flex-grow">
         <Accordion>
-          <AccordionTab header="Technische Details" className="font-semibold">
+          <AccordionTab header="Technische Details" className="font-semibold" aria-expanded="true">
             <ul className="lg:text-sm md:text-sm">
               <li className="mb-0.5">
                 Preis: ca.{" "}
@@ -112,7 +112,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       </div>
       <div className="mt-4 flex-grow">
         <Accordion>
-          <AccordionTab header="Funktionsumfang" className="font-semibold">
+          <AccordionTab header="Funktionsumfang" className="font-semibold" aria-expanded="true">
             <ul>
               {featureEntries.map(
                 ([feature, available]) =>

@@ -146,6 +146,7 @@ const ComparisonTool = () => {
             {!loading && (
               <Button
                 label="Alle zurücksetzen"
+                aria-label="Reset filtering"  // Added ARIA label
                 className="p-button-text text-sm lg:text-base"
                 onClick={resetFilters}
               />
@@ -157,6 +158,7 @@ const ComparisonTool = () => {
               options={sortOptions}
               onChange={(e) => setSortOption(e.value)}
               placeholder="Sortieren nach"
+              aria-label="Sort by options"
               className="text-xs md:text-sm lg:text-base w-full md:w-auto rounded-md"
             />
           )}
