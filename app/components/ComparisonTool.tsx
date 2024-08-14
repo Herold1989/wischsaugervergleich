@@ -157,7 +157,7 @@ const ComparisonTool = () => {
               options={sortOptions}
               onChange={(e) => setSortOption(e.value)}
               placeholder="Sortieren nach"
-              className="text-xs md:text-sm lg:text-base w-full md:w-auto"
+              className="text-xs md:text-sm lg:text-base w-full md:w-auto rounded-md"
             />
           )}
         </header>
