@@ -4,7 +4,6 @@ import FilterSidebar from "./FilterSidebar";
 import ProductCard from "./ProductCard";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
-import { Badge } from "primereact/badge";
 import { Skeleton } from "primereact/skeleton";
 import { Paginator, PaginatorPageChangeEvent } from "primereact/paginator";
 import { applyFilters } from "../utils/filtering";
@@ -32,7 +31,7 @@ export interface Product {
 
 const ComparisonTool = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [sortOption, setSortOption] = useState<string | null>(null);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [selectedPrice, setSelectedPrice] = useState<[number, number]>([0, 0]);
