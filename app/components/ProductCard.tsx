@@ -43,6 +43,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         alt={`Image of ${product.name}`}
         width={500} // Example width (adjust as needed)
         height={300} // Example height (adjust as needed)
+        placeholder="blur" // Optional: add a placeholder while loading
         className="w-full h-48 object-cover mb-4 rounded-md"
       />
       <div className="p-2 mb-2 bg-gray-100 rounded-md">
