@@ -84,8 +84,6 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           <AccordionTab
             header="Technische Details"
             className="font-semibold"
-            aria-labelledby={`product-title-${product.name}`}
-            aria-controls={`technical-details-${product.name}`}
           >
             <ul className="lg:text-sm md:text-sm">
               <li className="mb-0.5">
@@ -117,13 +115,8 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         </Accordion>
       </div>
       <div className="mt-4 flex-grow">
-      <Accordion>
-          <AccordionTab
-            header="Funktionsumfang"
-            className="font-semibold"
-            aria-labelledby={`product-title-${product.name}`}
-            aria-controls={`features-list-${product.name}`}
-          >
+        <Accordion>
+          <AccordionTab header="Funktionsumfang" className="font-semibold">
             <ul>
               {featureEntries.map(
                 ([feature, available]) =>
