@@ -80,8 +80,13 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         </div>
       </div>
       <div className="mt-4 flex-grow">
-        <Accordion>
-          <AccordionTab header="Technische Details" className="font-semibold" aria-expanded="true">
+      <Accordion>
+          <AccordionTab
+            header="Technische Details"
+            className="font-semibold"
+            aria-labelledby={`product-title-${product.name}`}
+            aria-controls={`technical-details-${product.name}`}
+          >
             <ul className="lg:text-sm md:text-sm">
               <li className="mb-0.5">
                 Preis: ca.{" "}
@@ -112,8 +117,13 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         </Accordion>
       </div>
       <div className="mt-4 flex-grow">
-        <Accordion>
-          <AccordionTab header="Funktionsumfang" className="font-semibold" aria-expanded="true">
+      <Accordion>
+          <AccordionTab
+            header="Funktionsumfang"
+            className="font-semibold"
+            aria-labelledby={`product-title-${product.name}`}
+            aria-controls={`features-list-${product.name}`}
+          >
             <ul>
               {featureEntries.map(
                 ([feature, available]) =>
