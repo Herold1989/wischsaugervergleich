@@ -55,27 +55,27 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       <div className="ratings mb-2 space-y-2">
         <div className="flex items-center justify-between rating-item">
           <span className="rating-label">Suction</span>
-          <ProgressBar value={product.suction} className="rating-bar" />
+          <ProgressBar value={product.suction} className="rating-bar" aria-label={`Rating of Suction: ${product.suction}`}/>
         </div>
         <div className="flex items-center justify-between rating-item">
           <span className="rating-label">Mopping</span>
-          <ProgressBar value={product.mopping} className="rating-bar" />
+          <ProgressBar value={product.mopping} className="rating-bar" aria-label={`Rating of Mopping: ${product.mopping}`} />
         </div>
         <div className="flex items-center justify-between rating-item">
           <span className="rating-label">App</span>
-          <ProgressBar value={product.app} className="rating-bar" />
+          <ProgressBar value={product.app} className="rating-bar" aria-label={`Rating of App: ${product.app}`}/>
         </div>
         <div className="flex items-center justify-between rating-item">
           <span className="rating-label">Navigation</span>
-          <ProgressBar value={product.navigation} className="rating-bar" />
+          <ProgressBar value={product.navigation} className="rating-bar" aria-label={`Rating of Naviagtion: ${product.navigation}`}/>
         </div>
         <div className="flex items-center justify-between rating-item">
           <span className="rating-label">Extras</span>
-          <ProgressBar value={product.extras} className="rating-bar" />
+          <ProgressBar value={product.extras} className="rating-bar" aria-label={`Rating of Extras: ${product.extras}`} />
         </div>
         <div className="flex items-center justify-between rating-item">
           <span className="rating-label">Praxis</span>
-          <ProgressBar value={product.praxis} className="rating-bar" />
+          <ProgressBar value={product.praxis} className="rating-bar" aria-label={`Rating of Praxis: ${product.praxis}`}/>
         </div>
       </div>
       <div className="mt-4 flex-grow">
