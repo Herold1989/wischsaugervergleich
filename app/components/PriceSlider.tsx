@@ -17,7 +17,7 @@ const PriceSlider: React.FC<PriceSliderProps> = ({
   priceRange,
 }) => {
   const [inputPrice, setInputPrice] = useState<[number, number]>(selectedPrice); // Initialize with selectedPrice
-  const debouncedPrice = useDebouncePriceRange(inputPrice, 1000);
+  const debouncedPrice = useDebouncePriceRange(inputPrice, 500);
 
   useEffect(() => {
     setInputPrice(selectedPrice);
@@ -56,6 +56,7 @@ const PriceSlider: React.FC<PriceSliderProps> = ({
           }
           placeholder={priceRange[0].toString()}
           className="w-20 p-inputtext-sm"
+          aria-label="Minimum Price"
         />
         <span>€</span>
         <span>-</span>
@@ -67,6 +68,7 @@ const PriceSlider: React.FC<PriceSliderProps> = ({
           }
           placeholder={priceRange[1].toString()}
           className="w-20 p-inputtext-sm"
+          aria-label="Maximum Price"
         />
         <span>€</span>
       </div>
